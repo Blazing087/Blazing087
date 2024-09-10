@@ -22,9 +22,11 @@ public class StackCustom {
 	
 	// Adding an Element in the Stack.
 	public void push(int element) {
+		// Checking if the Stack is full.
 		if (isFull()) {
 			System.out.println("Stack is Full!");
 		}else {
+			// If it's not full then it will add an element to the top.
 			stackArray[++top] = element;
 			System.out.print("Push Element:"+element+" ");
 		}
@@ -32,42 +34,50 @@ public class StackCustom {
 	
 	// Removing the Top Element in the stack.
 	public int pop() {
+		// If the Stack is Empty it will return -1
 		if (isEmpty()) {
 			System.out.println("Stack is Empty");
 			return -1;
 		}else {
+			// If not Empty then the top will Decrement.
 			return stackArray[top--];
 		}
 	}
 	
 	// Outputting the Top Element.
 	public int peek() {
+		// If the Stack is Empty it will return -1.
 		if (isEmpty()) {
 			System.out.println("Stack is Empty!");
 			return -1;
 		}else {
+			// If not Empty will return the top element.
 			return stackArray[top];
 		}
 	}
 	
 	public static void main(String[] args) {
+		// Declaring the StackCustom.??
 		StackCustom stack = new StackCustom(4);
 		
+		// Check if the Element is Empty.
 		if(stack.isEmpty()) {
 			System.out.println("Stack is Empty!");
 		}
 		System.out.println("======================================");
-		
+		// Adding Element in the stack
 		stack.push(10);
 		stack.push(30);
 		stack.push(50);
 		stack.push(40);
 		
 		System.out.println("\n======================================");
+		// Removing and outputting the Removed Element.
+		System.out.println("Emement Popped:"+stack.pop());
+		System.out.println("Emement Popped:"+stack.pop());
+		System.out.println("Emement Popped:"+stack.pop());
+		System.out.println("======================================");
 		
-		System.out.println("Emement Popped:"+stack.pop());
-		System.out.println("Emement Popped:"+stack.pop());
-		System.out.println("Emement Popped:"+stack.pop());
-		System.out.println("======================================");	
 	}
+
 }
