@@ -14,29 +14,37 @@ public class Queue {
 	
 	// Inserting Element from the QueueArray.
 	public void insert(int j) {
+		// Checking if the Queue is full.
 		if(isFull()){
 			System.out.println("Queue is Full!");
 			return;
+			// If not then it will check if the rear is equal to maxSize.
 		}else if(rear == maxsize -1) {
+			// If equal then the rear will Decrement.
 			rear--;
 		}
+		// If not then it will add an element to the rear.
 		queArray[++rear] = j;
+		// Them it will increment the elements.
 		nItem++;
 	}
 	
 	// Removing The Element From the QueueArray.
 	public int remove() {
+		// Declaring a temporary data.
 		int temp = -1;
+		// Checking if there is an element to remove.
 		if(isEmpty()) {
 			System.out.println("Queue is Empty!");
 		}else {
-			temp = queArray[front++];
+			temp = queArray[front++]; // If the is then temp will be equal to array.
+			// check if the front is equal to the maxSize of the Array.
 			if(front == maxsize) {
 				front = 0;
 			}
-			nItem--;
+			nItem--; // If not it will decrement the items.
 		}
-		return temp;
+		return temp; // returning the temp.
 	}
 	
 	// Checking if the Queue is Empty.
@@ -55,8 +63,9 @@ public class Queue {
 	}
 	
 	public static void main(String[] args) {
+		// Declaring??
 		Queue queue = new Queue(5);
-		
+		// Adding or inserting element to the queue.
 		queue.insert(70);
 		queue.insert(80);
 		queue.insert(40);
@@ -64,6 +73,7 @@ public class Queue {
 		queue.insert(60);
 		queue.insert(90);
 		
+		// removing the Element from the queue.
 		System.out.println("Javac QueueApp.java Java QueueApp");
 		System.out.print(queue.remove()+ " ");
 		System.out.print(queue.remove()+ " ");
