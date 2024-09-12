@@ -1,0 +1,86 @@
+class Node {
+    int data;
+    Node next;
+
+    Node(int new_data) {
+        this.data = new_data;
+        this.next = null;
+    }
+}
+
+public class StackLinkList {
+	    // Head of the linked list
+	    Node head;
+
+	    // Constructor to initialize the stack
+	    public StackLinkList() {
+	        this.head = null; 
+	    }
+
+	    // Function to check if the stack is empty
+	    boolean isEmpty() {
+	        return head == null;
+	    }
+
+	    // Function to push an element onto the stack
+	    void push(int new_data) {
+	        // Create a new node with given data
+	        Node new_node = new Node(new_data);
+
+	        // Link the new node to the current top node
+	        new_node.next = head;
+	        
+	        // Update the top to the new node
+	        head = new_node;
+	        
+	        System.out.print(new_data);
+	    }
+
+	    // Function to remove the top element from the stack
+	    void pop() {
+	        // Check for stack underflow
+	        if (isEmpty()) {
+	            System.out.println("\nStack Underflow");
+	            return;
+	        }
+	        // Update the top to the next node
+	        head = head.next;
+	    }
+
+	    // Function to return the top element of the stack
+	    int peek() {
+	        if (!isEmpty()) {
+	            return head.data;
+	        } else {
+	            System.out.println("\nStack is empty");
+	            return Integer.MIN_VALUE;
+	        }
+	    }
+
+	public static void main(String[] args) {
+		 // Creating a stack
+        StackLinkList st = new StackLinkList();
+
+        // Push elements onto the stack
+       
+        st.push(55); 
+        System.out.print(" -> ");
+        st.push(44); 
+        System.out.print(" -> ");
+        st.push(33); 
+        System.out.print(" -> ");
+        st.push(22); 
+
+        // Print top element of the stack
+        System.out.println("\nTop element is " + st.peek());
+
+        // Removing two elements from the top
+        //System.out.println("Removing two elements...");
+        st.pop();
+        st.pop();
+        st.pop();
+        // Print top element of the stack
+        System.out.println("Top element is " + st.peek());
+        
+    }
+}
