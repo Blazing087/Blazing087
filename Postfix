@@ -1,0 +1,72 @@
+import java.util.Stack;
+public class StackPostfix {
+	
+	public static int StackPostfix(String expression) {
+		Stack<Integer> stack = new Stack<>();
+		// Checking the The Expression.
+		for(int i = 0; i < expression.length(); i++) {
+			char c = expression.charAt(i);
+			// checking if the current expression is number.
+			if (Character.isDigit(c)) {
+				// if its number it will push it to be come a character.
+				stack.push(Character.getNumericValue(c));
+				// checking is the character is a Operator then it will pop two element.
+			}else if(isOperator(c)) { 
+				if (stack.size() < 2) {
+                    throw new IllegalArgumentException("Insufficient operands in the stack.");
+                }
+                int r = stack.pop();
+                int l = stack.pop();
+                
+          // this will call the applyOperator so the it can compute the Element.
+				  int result = applyOperator(l, r, c);
+				
+          // it will put the sum of the element in the stack.
+				  stack.push(result); 
+			}
+		}
+		// checking is the stack size is not equal to 1.
+		if(stack.size() != 1) { 
+			throw new IllegalArgumentException("The postfix expression is invalid.");
+		}
+		// if not then it will remove a character from the stack
+		return stack.pop(); 
+	}
+	
+	// checking what kind of operator is the character.
+	public static boolean isOperator(char ch) {
+		return ch == '-' || ch == '+' || ch == '*' || ch == '/';
+	}
+	// applying the operator to the operands.
+	public static int applyOperator(int x, int y, int operator) {
+		switch(operator) {
+			case '+':
+				return x + y;
+			case '-':
+				return x - y;
+			case '*':
+				return x * y;
+			case '/':
+				if (y == 0) {
+					throw new ArithmeticException("Division by zero.");
+				}
+				return x / y;
+			default:
+				throw new IllegalArgumentException("Invalid operator: " + operator);
+		}
+	}
+	
+	public static void main(String[] args) {
+		// the one that will be check.
+		String postfixExpression = "54*5+";
+        try {
+        	 // don't know what will happen.
+            int result = StackPostfix(postfixExpression); 
+           
+            // outputting the result
+            System.out.println("Result of postfix expression \"" + postfixExpression + "\" is: " + result);
+        } catch (Exception e) { // if an error there is an error in the Expression.
+            System.err.println("Error: " + e.getMessage());
+        }
+    }
+}
