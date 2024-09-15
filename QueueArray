@@ -1,9 +1,10 @@
 public class Queue {
-	int maxsize;
+	//Declaring Variable 
+int maxsize;
 	int front, rear, nItem;
 	int[] queArray;
 	
-	//Declaring The Variables.
+	// Constracting Queue
 	public Queue(int s){
 		maxsize = s;
 		front = 0;
