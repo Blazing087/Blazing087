@@ -1,9 +1,10 @@
 public class StackCustom {
-	int top;
+	// Declaring Variables
+int top;
 	int stackArray[];
 	int maxsize;
 	
-	// Declaring the Variables
+	// Constrating StackCustom 
 	public StackCustom(int size) {
 		maxsize = size;
 		stackArray = new int[maxsize];
