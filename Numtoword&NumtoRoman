@@ -1,0 +1,144 @@
+import java.util.Scanner;
+public class Act4 {
+	
+	public static String numtoroman(int n) {
+		String x = "";
+			if (n < 1 || n >3999) {
+				System.out.println("INPUT OUT OF RANGE");
+			}else {
+				while(n>=1000) {
+					System.out.print("M");
+					n-=1000;
+				}
+				if (n >= 900) {System.out.print("CM"); n-=900;}
+				else if(n >=500) {System.out.print("D"); n-=500;}
+				else if(n >=400) {System.out.print("CD"); n-=400;}
+				while(n>=100) {
+					System.out.print("C");
+					n-=100;
+				}
+				if(n>=90) {System.out.print("XC"); n-=90;}
+				else if(n>=50) {System.out.print("L"); n-=50;}
+				else if(n>=40) {System.out.print("XL"); n-=40;}
+				while(n>=10) {
+					System.out.print("X");
+					n-=10;
+				}
+				if(n>=9) {System.out.print("IX"); n-=9;}
+				else if(n>=5) {System.out.print("V"); n-=5;}
+				else if(n>=4) {System.out.print("IV"); n-=4;}
+				while(n>= 1) {
+					System.out.print("I");
+					n-=1;
+				}
+			}
+			return x;
+		}
+	
+	public static String numtowords(int n) {
+		String y = " ";
+			int tt = n /10000;
+			n%=10000;
+			if(tt>0) {
+				if(tt == 1) System.out.print("Ten Thousand ");
+				else if(tt == 2)System.out.print("Twenty Thousand ");
+				else if(tt == 3)System.out.print("Thirty Thousand ");
+				else if(tt == 4)System.out.print("Forty Thousand ");
+				else if(tt == 5)System.out.print("Fifty Thousand ");
+				else if(tt == 6)System.out.print("Sixty Thousand ");
+				else if(tt == 7)System.out.print("Seventy Thousand ");
+				else if(tt == 8)System.out.print("Eighty Thousand ");
+				else if(tt == 9)System.out.print("Ninety Thousand ");
+			}
+			int t = n /1000;
+			n %= 1000;
+			if(t >0) {
+				if (t == 1) System.out.print("One Thousand ");
+				else if (t == 2) System.out.print("Two Thousand ");
+				else if (t == 3) System.out.print("Three Thousand ");
+				else if (t == 4) System.out.print("Four Tousand ");
+				else if (t == 5) System.out.print("Five Tousand ");
+				else if (t == 6) System.out.print("Six Tousand ");
+				else if (t == 7) System.out.print("Seven Tousand ");
+				else if (t == 8) System.out.print("Eight Tousand ");
+				else if (t == 9) System.out.print("Nine Tousand ");
+			}
+			int h = n/100;
+			n %= 100;
+			if(h > 0) {
+				if (h == 1) System.out.print("One Hundred ");
+				else if (h == 2) System.out.print("Two Hundred ");
+				else if (h == 3) System.out.print("Three Hundred ");
+				else if (h == 4) System.out.print("Four Hundred ");
+				else if (h == 5) System.out.print("Five Hundred ");
+				else if (h == 6) System.out.print("Six Hundred ");
+				else if (h == 7) System.out.print("Seven Hundred ");
+				else if (h == 8) System.out.print("Eight Hundred ");
+				else if (h == 9) System.out.print("Nine Hundred ");
+			}
+			int x = n/10;
+			n %= 10;
+			if(n>10) {
+				if (n == 10)System.out.print("Ten ");
+				else if (n == 11) System.out.print("Eleven ");
+				else if (n == 12) System.out.print("Twelve ");
+				else if (n == 13) System.out.print("Thirteen ");
+				else if (n == 14) System.out.print("Fourteen ");
+				else if (n == 15) System.out.print("Fifteen ");
+				else if (n == 16) System.out.print("Sixteen ");
+				else if (n == 17) System.out.print("Seventeen ");
+				else if (n == 18) System.out.print("Eighteen ");
+				else if (n == 19) System.out.print("Nineteen ");
+				
+			}else {
+				if (x == 2)System.out.print("Twenty ");
+				else if (x == 3)System.out.print("Thirty ");
+				else if (x == 4)System.out.print("Forty ");
+				else if (x == 5)System.out.print("Fifty ");
+				else if (x == 6)System.out.print("Sixty ");
+				else if (x == 7)System.out.print("Seventy ");
+				else if (x == 8)System.out.print("Eighty ");
+				else if (x == 9)System.out.print("Ninety ");
+			}
+			if(n == 1) System.out.print("One ");
+			else if(n == 2)System.out.print("Two ");
+			else if(n == 3)System.out.print("Three ");
+			else if(n == 4)System.out.print("Four ");
+			else if(n == 5)System.out.print("Five ");
+			else if(n == 6)System.out.print("Six ");
+			else if(n == 7)System.out.print("Seven ");
+			else if(n == 8)System.out.print("Eight");
+			else if(n == 9)System.out.print("Nine");
+		return y;
+	}
+	
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		char a;
+		do {
+			System.out.println("This program using Decision and Repetition Control Structures displays how many digit/s inputted\r\n"
+					+ "by the user and the equivalent inputted number in words.");
+			System.out.print("\n\tEnter an Integer Number\t: ");
+			int n = scan.nextInt();
+			if(n < 0 || n > 99999) {
+				System.out.println("\n\tYou entered an INVALID INPUT.\n" + "\t\t....\n" + "\t\t....");
+			}else {
+				int c = String.valueOf(n).length();
+				if(c == 1)System.out.println("\tYou entered a one digit number.");
+				else if(c == 2)System.out.println("\tYou entered a two digit number.");
+				else if(c == 3)System.out.println("\tYou entered a three digit number.");
+				else if(c == 4)System.out.println("\tYou entered a four digit number.");
+				else if(c == 5)System.out.println("\tYou entered a five digit number.");
+			System.out.println("\tThe number is "+ n);
+			System.out.print("\tThe number in words\t: ");
+			String words = numtowords(n);
+			System.out.print("\n\tIn Roman Numerals\t: ");
+			String roman = numtoroman(n);
+			}
+			System.out.print("\n\n\tInput Another? [Y/N]: ");
+			a = scan.next().charAt(0);
+			System.out.println('\n');
+		}while(a == 'y' || a == 'Y');
+		System.out.println("\n\tProgram Terminated…");
+	}
+}
