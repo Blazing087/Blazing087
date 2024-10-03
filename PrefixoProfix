@@ -1,63 +1,76 @@
-import java.util.*;
-class PostfixtoPrefix {
- 
-    // function to check if character
-    // is operator or not
-    static boolean isOperator(char x)
-    {
-        switch (x) {
-        case '+':
-        case '-':
-        case '/':
-        case '*':
-            return true;
-        }
-        return false;
+import java.util.Stack;
+class PrefixtoPostfix {
+    static boolean isOperator(char x) {
+        return x == '+' || x == '-' || x == '/' || x == '*';
     }
- 
-    // Convert prefix to Postfix expression
-    static String preToPost(String pre_exp)
-    {
- 
-        Stack<String> s = new Stack<String>();
- 
-        // length of expression
+
+    static String preToPost(String pre_exp) {
+        Stack<String> stack = new Stack<>();
         int length = pre_exp.length();
- 
-        // reading from right to left
-        for (int i = length - 1; i >= 0; i--) 
-        {
-            // check if symbol is operator
-            if (isOperator(pre_exp.charAt(i))) 
-            {
-                // pop two operands from stack
-                String op1 = s.peek();
-                s.pop();
-                String op2 = s.peek();
-                s.pop();
- 
-                // concat the operands and operator
-                String temp = op1 + op2 + pre_exp.charAt(i);
- 
-                // Push String temp back to stack
-                s.push(temp);
-            }
- 
-            // if symbol is an operand
-            else {
-                // push the operand to the stack
-                s.push(pre_exp.charAt(i) + "");
+
+        for (int i = length - 1; i >= 0; i--) {
+            char currentChar = pre_exp.charAt(i);
+            if (isOperator(currentChar)) {
+                if (stack.size() < 2) {
+                    throw new IllegalArgumentException("Invalid prefix expression");
+                }
+                String op1 = stack.pop();
+                String op2 = stack.pop();
+                String temp = op1 + op2 + currentChar;
+                stack.push(temp);
+            } else {
+                stack.push(String.valueOf(currentChar));
             }
         }
- 
-        // stack contains only the Postfix expression
-        return s.peek();
+
+        if (stack.size() != 1) {
+            throw new IllegalArgumentException("Invalid prefix expression");
+        }
+
+        return stack.pop();
     }
- 
-    // Driver Code
-    public static void main(String args[])
-    {
+
+    public static void main(String[] args) {
         String pre_exp = "+-A/B*C/AKL";
-        System.out.println("Postfix : "+ preToPost(pre_exp));
+        try {
+			System.out.println("The Prefix is: " + pre_exp);
+			System.out.println("The Postfix of the Prefix is: " + preToPost(pre_exp));
+			System.out.print('\n');
+		} catch (Exception e) {
+	            System.err.println("Error: " + e.getMessage());
+		}
+        String example2 = "*+AB-CD";
+        try {
+			System.out.println("The Prefix is: " + example2);
+			System.out.println("The Postfix of the Prefix is: " + preToPost(example2));
+			System.out.print('\n');
+		} catch (Exception e) {
+	            System.err.println("Error: " + e.getMessage());
+		}
+        String example3 = "+AB-CD";
+        try {
+			System.out.println("The Prefix is: " + example3);
+			System.out.println("The Postfix of the Prefix is: " + preToPost(example3));
+		} catch (Exception e) {
+	            System.err.println("Error: " + e.getMessage());
+	            System.out.print('\n');
+		}
+        String example4 = "ABCD";
+        try {
+			System.out.println("The Prefix is: " + example4);
+			System.out.println("The Postfix of the Prefix is: " + preToPost(example4));
+		} catch (Exception e) {
+	            System.err.println("Error: " + e.getMessage());
+	            System.out.print('\n');
+		}
+        String example5 = "+-";
+        try {
+			System.out.println("The Prefix is: " + example5);
+			System.out.println("The Postfix of the Prefix is: " + preToPost(example5));
+		} catch (Exception e) {
+	            System.err.println("Error: " + e.getMessage());
+	            System.out.print('\n');
+		}
+        
     }
 }
